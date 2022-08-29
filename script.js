@@ -49,36 +49,46 @@ function getPlayerChoice() {
 
 
 function singleRound(playerSelection, computerSelection) {
-    
-    console.log(playerSelection);
-    console.log(computerSelection);
 
     if (playerSelection === computerSelection) {
-        return "It's a draw!";
+        console.log("It's a draw!");
+        return "draw";
     
 
     } else if (
         (playerSelection === "Rock" && computerSelection === "Scissors") ||
         (playerSelection === "Paper" && computerSelection === "Rock")
     ) {
-        return `${playerSelection} beats ${computerSelection}! You've won!`;
+        console.log(
+            `${playerSelection} beats ${computerSelection}! You've won!`
+        );
+        return true;
     
     
     // Scissors beat ... / not scissors beats ... //
     } else if (
         playerSelection === "Scissors" && computerSelection === "Paper"
     ) {
-        return `${playerSelection} beat ${computerSelection}! You've won!`;
+        console.log(
+            `${playerSelection} beat ${computerSelection}! You've won!`
+        );
+        return true;
 
     } else if (
         playerSelection === "Paper" && computerSelection === "Scissors"
     ) {
-        return `${computerSelection} beat ${playerSelection}! You've lost!`
+        console.log(
+            `${computerSelection} beat ${playerSelection}! You've lost!`
+        );
+        return false;
     } 
     
     
     else {
-        return `${computerSelection} beats ${playerSelection}! You've lost!`
+        console.log(
+            `${computerSelection} beats ${playerSelection}! You've lost!`
+        );
+        return false;
     }
 }
 
@@ -91,3 +101,4 @@ const computerSelection = getComputerChoice();
 
 
 console.log(singleRound(playerSelection, computerSelection));
+
