@@ -9,6 +9,7 @@
 // - Automated Computer Response
 // - A function to compare the outputs
 // - Output the outcome
+// - A function for running the game with predefined amount of rounds
 
 // ==========================================================================
 
@@ -53,7 +54,6 @@ function singleRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         console.log("It's a draw!");
         return "draw";
-    
 
     } else if (
         (playerSelection === "Rock" && computerSelection === "Scissors") ||
@@ -62,8 +62,7 @@ function singleRound(playerSelection, computerSelection) {
         console.log(
             `${playerSelection} beats ${computerSelection}! You've won!`
         );
-        return true;
-    
+        return "win";
     
     // Scissors beat ... / not scissors beats ... //
     } else if (
@@ -72,7 +71,7 @@ function singleRound(playerSelection, computerSelection) {
         console.log(
             `${playerSelection} beat ${computerSelection}! You've won!`
         );
-        return true;
+        return "win";
 
     } else if (
         playerSelection === "Paper" && computerSelection === "Scissors"
@@ -80,15 +79,46 @@ function singleRound(playerSelection, computerSelection) {
         console.log(
             `${computerSelection} beat ${playerSelection}! You've lost!`
         );
-        return false;
+        return "lose";
     } 
-    
     
     else {
         console.log(
             `${computerSelection} beats ${playerSelection}! You've lost!`
         );
-        return false;
+        return "lose";
+    }
+}
+
+
+function game() {
+
+    let rounds = 5;
+    let playerPoints = 0;
+    let computerPoints = 0;
+
+    for (let i = 0; i < rounds; i++) {
+
+        let outcome = singleRound(getPlayerChoice(), getComputerChoice());
+
+        if (outcome === "draw"){
+            playerPoints += 1;
+            computerPoints += 1;
+        } else if (outcome === "win") {
+            playerPoints += 1;
+        } else {
+            computerPoints += 1;
+        }
+    }
+
+    if (playerPoints > computerPoints) {
+        return "You've won the game!";
+    
+    } else if (playerPoints === computerPoints) {
+        return "It's a draw!";
+    
+    } else {
+        return "You've lost the game!";
     }
 }
 
@@ -96,9 +126,5 @@ function singleRound(playerSelection, computerSelection) {
 // ==========================================================================
 
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-
-
-console.log(singleRound(playerSelection, computerSelection));
+console.log(game());
 
