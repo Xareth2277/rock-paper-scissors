@@ -5,20 +5,14 @@
 
 // Following is needed:
 
+// - Graphical User Interface
 // - A way for user to choose his "sign"
 // - Automated Computer Response
 // - A function to compare the outputs
 // - Output the outcome
-// - A function for running the game with predefined amount of rounds
+// - A function for running the game 
 
 // ==========================================================================
-
-
-function capitalizeStr (str) {
-    str =   str.charAt(0).toUpperCase() + 
-            str.slice(1).toLowerCase();
-    return str;
-}
 
 
 function getComputerChoice() {
@@ -29,23 +23,6 @@ function getComputerChoice() {
         "Scissors"
     ];
     return choices[Math.floor(Math.random() * choices.length)];
-}
-
-
-function getPlayerChoice() {
-    
-    const choice = capitalizeStr(prompt("Pick rock, paper or scissors: "));
-    
-    if (
-        choice !== "Rock" &&
-        choice !== "Paper" &&
-        choice !== "Scissors"
-    ) {
-        throw new Error ("Invalid choice! Please try again.");
-
-    } else {
-        return choice;
-    }
 }
 
 
@@ -91,40 +68,50 @@ function singleRound(playerSelection, computerSelection) {
 }
 
 
-function game() {
+function game(e) {
 
-    let rounds = 5;
-    let playerPoints = 0;
-    let computerPoints = 0;
+    let outcome = singleRound(
+        (e.target.id), 
+        getComputerChoice()
+    );
 
-    for (let i = 0; i < rounds; i++) {
+    if (outcome === "draw"){
+        playerPoints += 1;
+        computerPoints += 1;
+    } else if (outcome === "win") {
+        playerPoints += 1;
+    } else {
+        computerPoints += 1;
+    }
 
-        let outcome = singleRound(getPlayerChoice(), getComputerChoice());
+    console.log(playerPoints);
+    console.log(computerPoints);
 
-        if (outcome === "draw"){
-            playerPoints += 1;
-            computerPoints += 1;
-        } else if (outcome === "win") {
-            playerPoints += 1;
+    if (playerPoints === 5 || computerPoints === 5){
+    
+        if (playerPoints > computerPoints) {
+            console.log("You've won the game!");
+        
+        } else if (playerPoints === computerPoints) {
+            console.log("It's a draw!");
+        
         } else {
-            computerPoints += 1;
+            console.log("You've lost the game!");
         }
     }
-
-    if (playerPoints > computerPoints) {
-        return "You've won the game!";
-    
-    } else if (playerPoints === computerPoints) {
-        return "It's a draw!";
-    
-    } else {
-        return "You've lost the game!";
-    }
 }
+
+let playerPoints = 0;
+let computerPoints = 0;
 
 
 // ==========================================================================
 
 
-console.log(game());
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button => {
+    button.addEventListener('click', game);
+}));
+
 
