@@ -1,0 +1,30 @@
+html{
+    height: 100%;
+}
+
+body{
+    background: #200f15; 
+    background: linear-gradient( to bottom, #200f15, #370f1a, #4e0a1a, #650315); 
+    background: linear-gradient(to to bottom, #200f15, #370f1a, #4e0a1a, #650315);    
+    height: 100%;
+    font-family: 'Bungee Spice', cursive;
+}
+
+#title{
+    font-size: 4.5em;
+    display: flex;
+    justify-content: center;
+}
+
+.text{
+    display: flex;
+    justify-content: center;
+}
+
+.points{
+    font-size: 2em;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2em;
+    padding-right: 2em;
+}

@@ -102,8 +102,6 @@ function game(e) {
 }
 
 
-
-
 // ==========================================================================
 
 
@@ -115,11 +113,9 @@ const container = document.querySelector('.container');
 const pPoints = document.querySelector('.pPoints');
 const outcome = document.querySelector('.outcome');
 const cPoints = document.querySelector('.cPoints');
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.button');
 
 buttons.forEach((button => {
     button.addEventListener('click', game);
 }));
-
-// console.log(body);
 
