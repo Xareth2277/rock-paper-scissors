@@ -5,19 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
     <title>Rock-Paper-Scissors</title>
 </head>
 <body>
-
-    <h1>The Game of Rock-Paper-Scissors!</h1>
-    <h2>to the death!</h2>
-    <h4>not really :/</h4>
-    <h2>let's begin!</h2>
-
-    <button id="Rock">Rock!</button>
-    <button id="Paper">Paper!</button>
-    <button id="Scissors">Scissors!</button>
     
+    <p id="title">The Game of Rock-Paper-Scissors!</p>
+    
+    <div class="tempText"></div>
+
+    <div class="container">
+        <div class="points">
+            <div class="playerPoints">Player Points</div>
+                <div class="pPoints">0</div>
+            <div class="computerPoints">Computer Points</div>
+                <div class="cPoints">0</div>
+        </div>
+
+        <div class="buttons">
+            <button id="Rock">Rock!</button>
+            <button id="Paper">Paper!</button>
+            <button id="Scissors">Scissors!</button>
+        </div>
+
+        <div class="outcome"></div>
+    </div>
+
 </body>
 </html>
